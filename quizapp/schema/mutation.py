@@ -32,6 +32,7 @@ class CreateQuiz(graphene.Mutation):
 class CreateUser(graphene.Mutation):
     user = graphene.Field(lambda: Users)
     ok = graphene.Boolean()
+    useId = graphene.Int()
 
     class Arguments:
         input = CreateUserInput(required=True)
@@ -43,11 +44,11 @@ class CreateUser(graphene.Mutation):
         user = UserModel.query.filter_by(username=temp_user.username).first()
         ok = True
         if user:
-            return CreateUser(user=user, ok=False)
+            return CreateUser(user=user, ok=False, userId=None)
         user = temp_user
         db.session.add(user)
         db.session.commit()
-        return CreateUser(user=user, ok=ok)
+        return CreateUser(user=user, ok=ok, userId=user.user_id)
 
 
 class AuthMutation(graphene.Mutation):

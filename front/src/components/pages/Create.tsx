@@ -26,7 +26,6 @@ const Create: FC = () => {
       >
         <Row>
           <Col xs={{ span: 20, offset: 1 }} lg={{ span: 12, offset: 6 }}>
-            {/* TODO: 最低6文字未満の場合はエラー出す表示にする */}
             <Form name="problem">
               <Form.Item
                 label="問題文"
@@ -53,12 +52,12 @@ const Create: FC = () => {
               <Form.Item
                 name="answer"
                 label="答え"
+                initialValue="true"
                 rules={[{ required: true, message: '答えを選んでね' }]}
                 style={{ marginTop: 20 }}
               >
                 <Radio.Group
                   buttonStyle="solid"
-                  defaultValue="true"
                   onChange={(e) => setAns(e.target.value)}
                 >
                   <Radio.Button value="true">True</Radio.Button>
