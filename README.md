@@ -3,7 +3,7 @@
 `pip install -r requirements.txt`
 
 ## windows
-`set FLASK_APP=quizapp/wsgi.py`
+`set FLASK_APP=quizapp.wsgi.py`
 
 ## Mac/Linux
 `export FLASK_APP=quizapp.wsgi.py`
